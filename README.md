@@ -1,8 +1,9 @@
-
 #Jawbone UP Plot
+R code. 
 
+Having trouble with the scatter.smooth function.
 
-![jawbone steps](images/jawbone.png)
+It shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970.
 
 
 	df = read.csv("/Users/danielmsheehan/GitHub/jawbone/data/jawbone.csv")
@@ -23,10 +24,12 @@
 	 it shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970. 
 
 
+![jawbone steps](images/jawbone.png)
+
+##Here's the plot with a smooth line that doesn't seem to keep the correct month labels
 
 
-
-
+![jawbone steps](images/jawbone_scatter.png)
 ##First step
 In Python, with pandas,
 
