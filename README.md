@@ -2,7 +2,7 @@
 #Jawbone UP Plot
 
 
-![jawbone steps](images/jawbone.pdf)
+![jawbone steps](/images/jawbone.pdf)
 
 
 	df = read.csv("/Users/danielmsheehan/GitHub/jawbone/data/jawbone.csv")
