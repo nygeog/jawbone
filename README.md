@@ -2,7 +2,7 @@
 #Jawbone UP Plot
 
 
-![jawbone steps](https://github.com/nygeog/jawbone/blob/master/images/jawbone.pdf)
+![jawbone steps](images/jawbone.png)
 
 
 	df = read.csv("/Users/danielmsheehan/GitHub/jawbone/data/jawbone.csv")
