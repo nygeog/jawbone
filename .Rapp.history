@@ -68,3 +68,78 @@ head(df, n=10)#
 plot(df$DATE,df$m_steps,xlab="Time", ylab="Steps", main="Steps - Time", col="blue")#
 axis.Date(1,at=df$DATE,labels=format(df$DATE,"%m"),las=2)#
 #scatter.smooth(x=df$DATE, y=df$m_steps) #if this is uncommented it shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970.
+df = read.csv("data/jawbone.csv")#
+df<-df[apply(df, 1, function(x) sum(is.na(x)))<6,]#
+rownames(df)<-c(1:nrow(df))#
+#
+names(df)#
+#
+df$DATE = strptime(df$DATE, "%Y%m%d")#
+#
+plot(df$DATE,df$m_steps,xlab="Time", ylab="Steps", main="Steps - Time", col="blue")#
+lines(lowess(df$DATE,df$m_steps), col="red", lwd=3)#
+axis.Date(1,at=df$DATE,labels=format(df$DATE,"%m"),las=2)#
+#
+#Here's my problem#
+scatter.smooth(x=df$DATE, y=df$m_steps) #
+#if this is uncommented#
+#it shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970. #
+?lines#
+library(ggplot2)#
+head(df)#
+#
+df$group<-sample(c(0,1), size=nrow(df), replace=T)#
+#
+ggplot(df, aes(x=DATE, y=m_steps, color=m_distance))+geom_point()+#
+  facet_grid(~group)
+df = read.csv("data/jawbone.csv")#
+df<-df[apply(df, 1, function(x) sum(is.na(x)))<6,]#
+rownames(df)<-c(1:nrow(df))#
+#
+names(df)#
+#
+df$DATE = strptime(df$DATE, "%Y%m%d")#
+#
+#plot(df$DATE,df$m_steps,xlab="Time", ylab="Steps", main="Steps - Time", col="blue")#
+#lines(lowess(df$DATE,df$m_steps), col="red", lwd=3)#
+#axis.Date(1,at=df$DATE,labels=format(df$DATE,"%m"),las=2)#
+#
+#Here's my problem#
+#scatter.smooth(x=df$DATE, y=df$m_steps) #
+#if this is uncommented#
+#it shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970. #
+?lines#
+library(ggplot2)#
+head(df)#
+#
+df$group<-sample(c(0,1), size=nrow(df), replace=T)#
+#
+ggplot(df, aes(x=DATE, y=m_steps, color=m_distance))+geom_point()+#
+  facet_grid(~group)
+df = read.csv("data/jawbone.csv")#
+df<-df[apply(df, 1, function(x) sum(is.na(x)))<6,]#
+rownames(df)<-c(1:nrow(df))#
+#
+names(df)#
+#
+df$DATE = strptime(df$DATE, "%Y%m%d")#
+#
+plot(df$DATE,df$m_steps,xlab="Time", ylab="Steps", main="Steps - Time", col="blue")#
+lines(lowess(df$DATE,df$m_steps), col="red", lwd=3)#
+axis.Date(1,at=df$DATE,labels=format(df$DATE,"%m"),las=2)#
+#
+#Here's my problem#
+#scatter.smooth(x=df$DATE, y=df$m_steps) #
+#if this is uncommented#
+#it shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970. #
+?lines#
+#
+#Here's the ggplot code andrew showed. #
+#
+#library(ggplot2)#
+#head(df)#
+#
+#df$group<-sample(c(0,1), size=nrow(df), replace=T)#
+#
+#ggplot(df, aes(x=DATE, y=m_steps, color=m_distance))+geom_point()+#
+  #facet_grid(~group)
