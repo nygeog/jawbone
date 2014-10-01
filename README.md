@@ -1,35 +1,29 @@
 #Jawbone UP Plot
 R code. 
 
-Having trouble with the scatter.smooth function.
-
-It shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970.
+	df = read.csv("data/jawbone.csv")
 
 
-	df = read.csv("/Users/danielmsheehan/GitHub/jawbone/data/jawbone.csv")
+	df<-df[apply(df, 1, function(x) sum(is.na(x)))<6,]
+	rownames(df)<-c(1:nrow(df))
 
 	names(df)
 
 	df$DATE = strptime(df$DATE, "%Y%m%d")
 
-	head(df, n=10)
-
-
 	plot(df$DATE,df$m_steps,xlab="Time", ylab="Steps", main="Steps - Time", col="blue")
+	lines(lowess(df$DATE,df$m_steps), col="red", lwd=3)
 	axis.Date(1,at=df$DATE,labels=format(df$DATE,"%m"),las=2)
-	
-	#Here's my problem
-	#scatter.smooth(x=df$DATE, y=df$m_steps) 
-	#if this is uncommented
-	 it shows the scatter but for some reason gets rid of the correct labels, it might be changing them to epoch time ie. 1970. 
+
+
+	dev.copy(png,filename="images/jawbone.png");
+	dev.off ();
+
 
 
 ![jawbone steps](images/jawbone.png)
 
-##Here's the plot with a smooth line that doesn't seem to keep the correct month labels
 
-
-![jawbone steps](images/jawbone_scatter.png)
 ##First step
 In Python, with pandas,
 
